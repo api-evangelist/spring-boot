@@ -26,13 +26,15 @@ apis:
   - type: Documentation
     url: https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/
   - type: OpenAPI
-    url: https://docs.spring.io/spring-boot/docs/current/actuator-api/openapi.yaml
+    url: openapi/spring-boot-actuator-openapi.yml
   - type: Health Endpoint
     url: http://localhost:8080/actuator/health
   - type: Metrics Endpoint
     url: http://localhost:8080/actuator/metrics
   - type: Info Endpoint
     url: http://localhost:8080/actuator/info
+  - type: JSONSchema
+    url: json-schema/spring-boot-application-properties.json
 - name: Spring Boot REST API
   description: RESTful web services built with Spring Boot
   humanUrl: https://spring.io/guides/gs/rest-service/

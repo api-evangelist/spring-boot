@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/spring-boot/json-schema/spring-boot-application-properties.json",
+  "title": "Spring Boot Application Configuration",
+  "description": "JSON Schema for Spring Boot application.yml / application.properties configuration. Covers server, datasource, JPA, logging, security, and actuator settings.",
+  "type": "object",
+  "properties": {
+    "spring": {
+      "type": "object",
+      "description": "Spring framework configuration namespace",
+      "properties": {
+        "application": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Application name used in Spring Cloud service discovery and admin"
+            }
+          }
+        },
+        "profiles": {
+          "type": "object",
+          "properties": {
+            "active": {
+              "type": "string",
+              "description": "Comma-separated list of active profiles"
+            },
+            "include": {
+              "type": "string",
+              "description": "Profiles to unconditionally include"
+            }
+          }
+        },
+        "datasource": {
+          "type": "object",
+          "description": "DataSource configuration",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "JDBC URL of the database",
+              "examples": ["jdbc:mysql://localhost:3306/mydb"]
+            },
+            "username": {
+              "type": "string",
+              "description": "Login username of the database"
+            },
+            "password": {
+              "type": "string",
+              "description": "Login password of the database"
+            },
+            "driver-class-name": {
+              "type": "string",
+              "description": "Fully qualified JDBC driver class name"
+            },
+            "hikari": {
+              "type": "object",
+              "description": "HikariCP connection pool settings",
+              "properties": {
+                "maximum-pool-size": {
+                  "type": "integer",
+                  "default": 10,
+                  "description": "Maximum pool size"
+                },
+                "minimum-idle": {
+                  "type": "integer",
+                  "description": "Minimum idle connections"
+                },
+                "connection-timeout": {
+                  "type": "integer",
+                  "default": 30000,
+                  "description": "Connection timeout in milliseconds"
+                },
+                "idle-timeout": {
+                  "type": "integer",
+                  "default": 600000,
+                  "description": "Maximum idle lifetime in milliseconds"
+                }
+              }
+            }
+          }
+        },
+        "jpa": {
+          "type": "object",
+          "description": "JPA/Hibernate configuration",
+          "properties": {
+            "hibernate": {
+              "type": "object",
+              "properties": {
+                "ddl-auto": {
+                  "type": "string",
+                  "enum": ["none", "validate", "update", "create", "create-drop"],
+                  "description": "DDL mode for Hibernate"
+                }
+              }
+            },
+            "show-sql": {
+              "type": "boolean",
+              "default": false,
+              "description": "Whether to enable SQL statement logging"
+            },
+            "open-in-view": {
+              "type": "boolean",
+              "default": true,
+              "description": "Register OpenEntityManagerInViewInterceptor"
+            },
+            "database-platform": {
+              "type": "string",
+              "description": "Hibernate dialect class name"
+            }
+          }
+        },
+        "jackson": {
+          "type": "object",
+          "description": "Jackson JSON serialization settings",
+          "properties": {
+            "date-format": {
+              "type": "string",
+              "description": "Date format pattern or fully qualified class name"
+            },
+            "serialization": {
+              "type": "object",
+              "properties": {
+                "write-dates-as-timestamps": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "indent-output": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "default-property-inclusion": {
+              "type": "string",
+              "enum": ["always", "non_null", "non_absent", "non_default", "non_empty"]
+            }
+          }
+        },
+        "security": {
+          "type": "object",
+          "description": "Spring Security configuration",
+          "properties": {
+            "user": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "default": "user",
+                  "description": "Default user name"
+                },
+                "password": {
+                  "type": "string",
+                  "description": "Password for the default user"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "Granted roles for the default user"
+                }
+              }
+            },
+            "oauth2": {
+              "type": "object",
+              "properties": {
+                "client": {
+                  "type": "object",
+                  "properties": {
+                    "registration": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "client-id": { "type": "string" },
+                          "client-secret": { "type": "string" },
+                          "scope": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          },
+                          "redirect-uri": { "type": "string" },
+                          "authorization-grant-type": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                },
+                "resourceserver": {
+                  "type": "object",
+                  "properties": {
+                    "jwt": {
+                      "type": "object",
+                      "properties": {
+                        "issuer-uri": { "type": "string" },
+                        "jwk-set-uri": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "cache": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["caffeine", "redis", "ehcache", "hazelcast", "simple", "none"],
+              "description": "Cache type"
+            }
+          }
+        },
+        "mail": {
+          "type": "object",
+          "properties": {
+            "host": { "type": "string" },
+            "port": { "type": "integer" },
+            "username": { "type": "string" },
+            "password": { "type": "string" }
+          }
+        }
+      }
+    },
+    "server": {
+      "type": "object",
+      "description": "Embedded server configuration",
+      "properties": {
+        "port": {
+          "type": "integer",
+          "default": 8080,
+          "description": "Server HTTP port"
+        },
+        "address": {
+          "type": "string",
+          "description": "Network address to which the server should bind"
+        },
+        "servlet": {
+          "type": "object",
+          "properties": {
+            "context-path": {
+              "type": "string",
+              "description": "Context path of the application",
+              "examples": ["/api"]
+            }
+          }
+        },
+        "ssl": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "key-store": { "type": "string" },
+            "key-store-password": { "type": "string" },
+            "key-store-type": { "type": "string" },
+            "key-alias": { "type": "string" }
+          }
+        },
+        "compression": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "min-response-size": { "type": "integer", "default": 2048 },
+            "mime-types": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "include-message": {
+              "type": "string",
+              "enum": ["always", "never", "on_param"]
+            },
+            "include-stacktrace": {
+              "type": "string",
+              "enum": ["always", "never", "on_param"]
+            }
+          }
+        }
+      }
+    },
+    "management": {
+      "type": "object",
+      "description": "Spring Boot Actuator management configuration",
+      "properties": {
+        "server": {
+          "type": "object",
+          "properties": {
+            "port": {
+              "type": "integer",
+              "description": "Management server port (separate from main server)"
+            }
+          }
+        },
+        "endpoints": {
+          "type": "object",
+          "properties": {
+            "web": {
+              "type": "object",
+              "properties": {
+                "base-path": {
+                  "type": "string",
+                  "default": "/actuator",
+                  "description": "Base path for actuator endpoints"
+                },
+                "exposure": {
+                  "type": "object",
+                  "properties": {
+                    "include": {
+                      "type": "string",
+                      "description": "Endpoint IDs to include (comma-separated or *)",
+                      "examples": ["health,info,metrics", "*"]
+                    },
+                    "exclude": {
+                      "type": "string",
+                      "description": "Endpoint IDs to exclude"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "endpoint": {
+          "type": "object",
+          "properties": {
+            "health": {
+              "type": "object",
+              "properties": {
+                "show-details": {
+                  "type": "string",
+                  "enum": ["never", "when_authorized", "always"],
+                  "default": "never"
+                },
+                "show-components": {
+                  "type": "string",
+                  "enum": ["never", "when_authorized", "always"]
+                }
+              }
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "tags": {
+              "type": "object",
+              "additionalProperties": { "type": "string" },
+              "description": "Common tags applied to every meter"
+            },
+            "export": {
+              "type": "object",
+              "properties": {
+                "prometheus": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": { "type": "boolean", "default": true }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tracing": {
+          "type": "object",
+          "properties": {
+            "sampling": {
+              "type": "object",
+              "properties": {
+                "probability": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "default": 0.1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "logging": {
+      "type": "object",
+      "description": "Logging configuration",
+      "properties": {
+        "level": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "OFF"]
+          },
+          "description": "Log level mappings (logger name to level)"
+        },
+        "file": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "description": "Log file name" },
+            "path": { "type": "string", "description": "Log file path" }
+          }
+        },
+        "pattern": {
+          "type": "object",
+          "properties": {
+            "console": { "type": "string" },
+            "file": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

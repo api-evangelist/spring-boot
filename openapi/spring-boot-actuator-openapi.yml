@@ -1,0 +1,462 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator API
+  description: >-
+    Spring Boot Actuator exposes production-ready management and monitoring
+    endpoints for Spring Boot applications. Endpoints provide health checks,
+    metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080/actuator
+    description: Default Actuator base path
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Application health information
+      description: Returns the health status of the application and its components
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Application is healthy
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/Health'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '503':
+          description: Application is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /health/{component}:
+    get:
+      operationId: getHealthComponent
+      summary: Health for a specific component
+      tags:
+        - Health
+      parameters:
+        - name: component
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Health component name (e.g., db, diskSpace, redis)
+      responses:
+        '200':
+          description: Component health details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '404':
+          description: Component not found
+  /info:
+    get:
+      operationId: getInfo
+      summary: Application info
+      description: Returns arbitrary application info from InfoContributor beans
+      tags:
+        - Info
+      responses:
+        '200':
+          description: Application information
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                type: object
+                additionalProperties: true
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /metrics:
+    get:
+      operationId: listMetrics
+      summary: List available metric names
+      tags:
+        - Metrics
+      responses:
+        '200':
+          description: List of metric names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  names:
+                    type: array
+                    items:
+                      type: string
+  /metrics/{metricName}:
+    get:
+      operationId: getMetric
+      summary: Get metric measurements
+      tags:
+        - Metrics
+      parameters:
+        - name: metricName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Metric name (e.g., jvm.memory.used, http.server.requests)
+        - name: tag
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          description: 'Tag filter in KEY:VALUE format'
+      responses:
+        '200':
+          description: Metric measurements and available tags
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+        '404':
+          description: Metric not found
+  /env:
+    get:
+      operationId: getEnvironment
+      summary: Application environment properties
+      description: Returns all environment properties including system, application, and profile-specific
+      tags:
+        - Environment
+      responses:
+        '200':
+          description: Environment properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+  /env/{property}:
+    get:
+      operationId: getEnvironmentProperty
+      summary: Specific environment property value
+      tags:
+        - Environment
+      parameters:
+        - name: property
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Property value and sources
+          content:
+            application/json:
+              schema:
+                type: object
+  /beans:
+    get:
+      operationId: getBeans
+      summary: List all Spring beans
+      description: Returns all beans in the application context with their dependencies
+      tags:
+        - Application
+      responses:
+        '200':
+          description: Bean definitions
+          content:
+            application/json:
+              schema:
+                type: object
+  /configprops:
+    get:
+      operationId: getConfigurationProperties
+      summary: Configuration properties report
+      description: Returns all @ConfigurationProperties beans and their bound values
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Configuration properties
+          content:
+            application/json:
+              schema:
+                type: object
+  /mappings:
+    get:
+      operationId: getMappings
+      summary: Request mappings
+      description: Returns all @RequestMapping paths in the application
+      tags:
+        - Application
+      responses:
+        '200':
+          description: Request mapping details
+          content:
+            application/json:
+              schema:
+                type: object
+  /loggers:
+    get:
+      operationId: getLoggers
+      summary: List all loggers and their levels
+      tags:
+        - Loggers
+      responses:
+        '200':
+          description: Logger configurations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  levels:
+                    type: array
+                    items:
+                      type: string
+                  loggers:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/LoggerLevel'
+  /loggers/{name}:
+    get:
+      operationId: getLogger
+      summary: Get logger level
+      tags:
+        - Loggers
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Logger level
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoggerLevel'
+    post:
+      operationId: setLoggerLevel
+      summary: Set logger level at runtime
+      tags:
+        - Loggers
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuredLevel:
+                  type: string
+                  enum: [TRACE, DEBUG, INFO, WARN, ERROR, OFF]
+      responses:
+        '204':
+          description: Logger level updated
+  /threaddump:
+    get:
+      operationId: getThreadDump
+      summary: Thread dump
+      description: Returns a snapshot of all threads in the JVM
+      tags:
+        - JVM
+      responses:
+        '200':
+          description: Thread dump
+          content:
+            application/json:
+              schema:
+                type: object
+  /heapdump:
+    get:
+      operationId: getHeapDump
+      summary: Heap dump
+      description: Returns an hprof heap dump file
+      tags:
+        - JVM
+      responses:
+        '200':
+          description: Heap dump binary file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /scheduledtasks:
+    get:
+      operationId: getScheduledTasks
+      summary: Scheduled tasks
+      tags:
+        - Application
+      responses:
+        '200':
+          description: Scheduled task details
+          content:
+            application/json:
+              schema:
+                type: object
+  /caches:
+    get:
+      operationId: getCaches
+      summary: List application caches
+      tags:
+        - Caches
+      responses:
+        '200':
+          description: Cache managers and caches
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      operationId: evictAllCaches
+      summary: Evict all caches
+      tags:
+        - Caches
+      responses:
+        '204':
+          description: All caches evicted
+  /caches/{cacheName}:
+    delete:
+      operationId: evictCache
+      summary: Evict specific cache
+      tags:
+        - Caches
+      parameters:
+        - name: cacheName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Cache evicted
+        '404':
+          description: Cache not found
+  /shutdown:
+    post:
+      operationId: shutdown
+      summary: Graceful shutdown
+      description: Shuts down the application (must be explicitly enabled)
+      tags:
+        - Lifecycle
+      responses:
+        '200':
+          description: Shutdown initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /prometheus:
+    get:
+      operationId: getPrometheus
+      summary: Prometheus metrics scrape endpoint
+      description: Returns metrics in Prometheus exposition format
+      tags:
+        - Metrics
+      responses:
+        '200':
+          description: Prometheus metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [UP, DOWN, OUT_OF_SERVICE, UNKNOWN]
+          description: Aggregate health status
+        components:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              status:
+                type: string
+              details:
+                type: object
+                additionalProperties: true
+        details:
+          type: object
+          additionalProperties: true
+    MetricResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        baseUnit:
+          type: string
+        measurements:
+          type: array
+          items:
+            type: object
+            properties:
+              statistic:
+                type: string
+                enum: [TOTAL, TOTAL_TIME, COUNT, MAX, VALUE, ACTIVE_TASKS, DURATION]
+              value:
+                type: number
+        availableTags:
+          type: array
+          items:
+            type: object
+            properties:
+              tag:
+                type: string
+              values:
+                type: array
+                items:
+                  type: string
+    Environment:
+      type: object
+      properties:
+        activeProfiles:
+          type: array
+          items:
+            type: string
+        propertySources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              properties:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                    origin:
+                      type: string
+    LoggerLevel:
+      type: object
+      properties:
+        configuredLevel:
+          type: string
+        effectiveLevel:
+          type: string
