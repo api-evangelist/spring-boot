@@ -460,3 +460,14 @@ components:
           type: string
         effectiveLevel:
           type: string
+tags:
+  - name: Application
+  - name: Caches
+  - name: Configuration
+  - name: Environment
+  - name: Health
+  - name: Info
+  - name: JVM
+  - name: Lifecycle
+  - name: Loggers
+  - name: Metrics

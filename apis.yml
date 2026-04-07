@@ -6,29 +6,27 @@ url: https://spring.io/projects/spring-boot
 created: '2024'
 modified: '2026-03-16'
 tags:
-  - Java
-  - Spring
   - Framework
+  - Java
   - Microservices
   - REST API
+  - Spring
   - Web Development
 apis:
   - name: Spring Boot Actuator API
     description: >-
       Production-ready features to help monitor and manage Spring Boot applications.
     image: https://spring.io/img/spring-boot-logo.png
-    humanUrl: 
-      https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+    humanUrl: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
     baseUrl: http://localhost:8080/actuator
     tags:
-      - Monitoring
       - Health Check
-      - Metrics
       - Management
+      - Metrics
+      - Monitoring
     properties:
       - type: Documentation
-        url: 
-          https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/
+        url: https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/
       - type: OpenAPI
         url: openapi/spring-boot-actuator-openapi.yml
       - type: Health Endpoint
@@ -45,14 +43,13 @@ apis:
     humanUrl: https://spring.io/guides/gs/rest-service/
     baseUrl: http://localhost:8080/api
     tags:
-      - REST
-      - Web Services
       - HTTP
       - JSON
+      - REST
+      - Web Services
     properties:
       - type: Documentation
-        url: 
-          https://docs.spring.io/spring-boot/docs/current/reference/html/web.html
+        url: https://docs.spring.io/spring-boot/docs/current/reference/html/web.html
       - type: Getting Started Guide
         url: https://spring.io/guides/gs/rest-service/
       - type: Tutorial
@@ -63,14 +60,13 @@ apis:
     humanUrl: https://spring.io/projects/spring-data-rest
     baseUrl: http://localhost:8080/
     tags:
-      - REST
+      - Database
       - HATEOAS
       - Repository
-      - Database
+      - REST
     properties:
       - type: Documentation
-        url: 
-          https://docs.spring.io/spring-data/rest/docs/current/reference/html/
+        url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/
       - type: API Guide
         url: https://docs.spring.io/spring-data/rest/docs/current/api/
       - type: Getting Started
@@ -82,17 +78,16 @@ apis:
     baseUrl: http://localhost:8080/admin
     tags:
       - Administration
-      - Monitoring
       - Dashboard
       - Management
+      - Monitoring
     properties:
       - type: Documentation
         url: https://codecentric.github.io/spring-boot-admin/current/
       - type: GitHub Repository
         url: https://github.com/codecentric/spring-boot-admin
       - type: Getting Started
-        url: 
-          https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        url: https://codecentric.github.io/spring-boot-admin/current/#getting-started
 maintainers:
   - name: Pivotal Software (VMware)
     email: spring-boot@pivotal.io
