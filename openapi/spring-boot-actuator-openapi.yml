@@ -19,7 +19,7 @@ paths:
   /health:
     get:
       operationId: getHealth
-      summary: Application health information
+      summary: Spring Boot Application health information
       description: Returns the health status of the application and its components
       tags:
         - Health
@@ -42,7 +42,7 @@ paths:
   /health/{component}:
     get:
       operationId: getHealthComponent
-      summary: Health for a specific component
+      summary: Spring Boot Health for a specific component
       tags:
         - Health
       parameters:
@@ -64,7 +64,7 @@ paths:
   /info:
     get:
       operationId: getInfo
-      summary: Application info
+      summary: Spring Boot Application info
       description: Returns arbitrary application info from InfoContributor beans
       tags:
         - Info
@@ -83,7 +83,7 @@ paths:
   /metrics:
     get:
       operationId: listMetrics
-      summary: List available metric names
+      summary: Spring Boot List available metric names
       tags:
         - Metrics
       responses:
@@ -101,7 +101,7 @@ paths:
   /metrics/{metricName}:
     get:
       operationId: getMetric
-      summary: Get metric measurements
+      summary: Spring Boot Get metric measurements
       tags:
         - Metrics
       parameters:
@@ -131,7 +131,7 @@ paths:
   /env:
     get:
       operationId: getEnvironment
-      summary: Application environment properties
+      summary: Spring Boot Application environment properties
       description: Returns all environment properties including system, application, and profile-specific
       tags:
         - Environment
@@ -145,7 +145,7 @@ paths:
   /env/{property}:
     get:
       operationId: getEnvironmentProperty
-      summary: Specific environment property value
+      summary: Spring Boot Specific environment property value
       tags:
         - Environment
       parameters:
@@ -164,7 +164,7 @@ paths:
   /beans:
     get:
       operationId: getBeans
-      summary: List all Spring beans
+      summary: Spring Boot List all Spring beans
       description: Returns all beans in the application context with their dependencies
       tags:
         - Application
@@ -178,7 +178,7 @@ paths:
   /configprops:
     get:
       operationId: getConfigurationProperties
-      summary: Configuration properties report
+      summary: Spring Boot Configuration properties report
       description: Returns all @ConfigurationProperties beans and their bound values
       tags:
         - Configuration
@@ -192,7 +192,7 @@ paths:
   /mappings:
     get:
       operationId: getMappings
-      summary: Request mappings
+      summary: Spring Boot Request mappings
       description: Returns all @RequestMapping paths in the application
       tags:
         - Application
@@ -206,7 +206,7 @@ paths:
   /loggers:
     get:
       operationId: getLoggers
-      summary: List all loggers and their levels
+      summary: Spring Boot List all loggers and their levels
       tags:
         - Loggers
       responses:
@@ -228,7 +228,7 @@ paths:
   /loggers/{name}:
     get:
       operationId: getLogger
-      summary: Get logger level
+      summary: Spring Boot Get logger level
       tags:
         - Loggers
       parameters:
@@ -246,7 +246,7 @@ paths:
                 $ref: '#/components/schemas/LoggerLevel'
     post:
       operationId: setLoggerLevel
-      summary: Set logger level at runtime
+      summary: Spring Boot Set logger level at runtime
       tags:
         - Loggers
       parameters:
@@ -270,7 +270,7 @@ paths:
   /threaddump:
     get:
       operationId: getThreadDump
-      summary: Thread dump
+      summary: Spring Boot Thread dump
       description: Returns a snapshot of all threads in the JVM
       tags:
         - JVM
@@ -284,7 +284,7 @@ paths:
   /heapdump:
     get:
       operationId: getHeapDump
-      summary: Heap dump
+      summary: Spring Boot Heap dump
       description: Returns an hprof heap dump file
       tags:
         - JVM
@@ -299,7 +299,7 @@ paths:
   /scheduledtasks:
     get:
       operationId: getScheduledTasks
-      summary: Scheduled tasks
+      summary: Spring Boot Scheduled tasks
       tags:
         - Application
       responses:
@@ -312,7 +312,7 @@ paths:
   /caches:
     get:
       operationId: getCaches
-      summary: List application caches
+      summary: Spring Boot List application caches
       tags:
         - Caches
       responses:
@@ -324,7 +324,7 @@ paths:
                 type: object
     delete:
       operationId: evictAllCaches
-      summary: Evict all caches
+      summary: Spring Boot Evict all caches
       tags:
         - Caches
       responses:
@@ -333,7 +333,7 @@ paths:
   /caches/{cacheName}:
     delete:
       operationId: evictCache
-      summary: Evict specific cache
+      summary: Spring Boot Evict specific cache
       tags:
         - Caches
       parameters:
@@ -350,7 +350,7 @@ paths:
   /shutdown:
     post:
       operationId: shutdown
-      summary: Graceful shutdown
+      summary: Spring Boot Graceful shutdown
       description: Shuts down the application (must be explicitly enabled)
       tags:
         - Lifecycle
@@ -367,7 +367,7 @@ paths:
   /prometheus:
     get:
       operationId: getPrometheus
-      summary: Prometheus metrics scrape endpoint
+      summary: Spring Boot Prometheus metrics scrape endpoint
       description: Returns metrics in Prometheus exposition format
       tags:
         - Metrics
