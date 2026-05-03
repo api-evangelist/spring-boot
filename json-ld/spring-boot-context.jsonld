@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "spring": "https://spring.io/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "SpringBootActuator": "spring:SpringBootActuator",
+    "Health": "spring:Health",
+    "Metric": "spring:Metric",
+    "Logger": "spring:Logger",
+    "Environment": "spring:Environment",
+    "PropertySource": "spring:PropertySource",
+    "Cache": "spring:Cache",
+
+    "status": {
+      "@id": "spring:status",
+      "@type": "xsd:string"
+    },
+    "components": {
+      "@id": "spring:components",
+      "@container": "@index"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "measurements": {
+      "@id": "spring:measurements",
+      "@container": "@list"
+    },
+    "statistic": {
+      "@id": "spring:statistic",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "schema:value",
+      "@type": "xsd:number"
+    },
+    "baseUnit": {
+      "@id": "spring:baseUnit",
+      "@type": "xsd:string"
+    },
+    "availableTags": {
+      "@id": "spring:availableTags",
+      "@container": "@list"
+    },
+    "activeProfiles": {
+      "@id": "spring:activeProfiles",
+      "@container": "@list"
+    },
+    "propertySources": {
+      "@id": "spring:propertySources",
+      "@container": "@list"
+    },
+    "configuredLevel": {
+      "@id": "spring:configuredLevel",
+      "@type": "xsd:string"
+    },
+    "effectiveLevel": {
+      "@id": "spring:effectiveLevel",
+      "@type": "xsd:string"
+    },
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "SoftwareSourceCode": "schema:SoftwareSourceCode",
+    "programmingLanguage": "schema:programmingLanguage",
+    "license": "schema:license",
+    "url": "schema:url"
+  }
+}

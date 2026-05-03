@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/spring-boot/json-schema/spring-boot-actuator-metric-schema.json",
+  "title": "Spring Boot Actuator Metric Response",
+  "description": "JSON Schema for the Spring Boot Actuator /metrics/{metricName} endpoint response.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Metric name (e.g., jvm.memory.used, http.server.requests)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable metric description"
+    },
+    "baseUnit": {
+      "type": "string",
+      "description": "Base unit of measurement (e.g., bytes, seconds)"
+    },
+    "measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "statistic": {
+            "type": "string",
+            "enum": ["TOTAL", "TOTAL_TIME", "COUNT", "MAX", "VALUE", "ACTIVE_TASKS", "DURATION"],
+            "description": "Measurement statistic type"
+          },
+          "value": {
+            "type": "number",
+            "description": "Numeric measurement value"
+          }
+        },
+        "required": ["statistic", "value"]
+      }
+    },
+    "availableTags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "string",
+            "description": "Tag key name"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Available tag values"
+          }
+        },
+        "required": ["tag", "values"]
+      }
+    }
+  },
+  "required": ["name", "measurements"]
+}

@@ -1,0 +1,48 @@
+{
+  "operation": "getHealth",
+  "method": "GET",
+  "path": "/actuator/health",
+  "description": "Get application health status",
+  "request": {
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "status": "UP",
+      "components": {
+        "db": {
+          "status": "UP",
+          "details": {
+            "database": "PostgreSQL",
+            "validationQuery": "isValid()"
+          }
+        },
+        "diskSpace": {
+          "status": "UP",
+          "details": {
+            "total": 499963174912,
+            "free": 214748364800,
+            "threshold": 10485760,
+            "path": ".",
+            "exists": true
+          }
+        },
+        "ping": {
+          "status": "UP"
+        },
+        "redis": {
+          "status": "UP",
+          "details": {
+            "version": "7.0.11"
+          }
+        }
+      }
+    }
+  }
+}

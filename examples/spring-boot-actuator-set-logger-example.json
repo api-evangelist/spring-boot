@@ -1,0 +1,21 @@
+{
+  "operation": "setLoggerLevel",
+  "method": "POST",
+  "path": "/actuator/loggers/com.example",
+  "description": "Set logger level at runtime",
+  "request": {
+    "pathParameters": {
+      "name": "com.example"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "configuredLevel": "DEBUG"
+    }
+  },
+  "response": {
+    "status": 204,
+    "description": "Logger level updated successfully"
+  }
+}

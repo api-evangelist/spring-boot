@@ -1,0 +1,140 @@
+name: Spring Boot Vocabulary
+description: Domain vocabulary and taxonomy for Spring Boot framework concepts, APIs, and developer terminology.
+version: "3.3.0"
+created: "2026-05-02"
+modified: "2026-05-02"
+url: https://spring.io/projects/spring-boot
+
+terms:
+
+  - term: Actuator
+    definition: >-
+      A Spring Boot module that provides production-ready management and monitoring endpoints.
+      Exposes operational information about the running application (health, metrics, info,
+      dump, env) via HTTP or JMX.
+    category: Module
+    tags:
+      - Monitoring
+      - Management
+      - Operations
+
+  - term: Auto-Configuration
+    definition: >-
+      Spring Boot's mechanism for automatically configuring Spring applications based on
+      jar dependencies on the classpath. Uses @EnableAutoConfiguration and conditional
+      annotations to apply configuration only when specific beans or classes are present.
+    category: Core Concept
+    tags:
+      - Configuration
+      - Convention Over Configuration
+
+  - term: Starter
+    definition: >-
+      Convenient dependency descriptors that include all the required dependencies for
+      a specific technology. For example, spring-boot-starter-web includes Spring MVC,
+      Tomcat, and Jackson without requiring individual dependency management.
+    category: Dependency Management
+    tags:
+      - Maven
+      - Gradle
+      - Dependencies
+
+  - term: Embedded Server
+    definition: >-
+      A servlet container (Tomcat, Jetty, or Undertow) bundled inside the application
+      JAR, enabling standalone deployment without an external application server.
+    category: Deployment
+    tags:
+      - Tomcat
+      - Jetty
+      - Undertow
+      - JAR
+
+  - term: Health Indicator
+    definition: >-
+      A component implementing HealthIndicator that contributes to the overall application
+      health status. Built-in indicators exist for database, disk space, Redis, RabbitMQ,
+      and more. Custom indicators can be added by implementing the interface.
+    category: Actuator
+    tags:
+      - Health Check
+      - Monitoring
+
+  - term: Micrometer
+    definition: >-
+      A vendor-neutral application metrics facade used by Spring Boot Actuator. Supports
+      multiple monitoring systems (Prometheus, Datadog, New Relic, CloudWatch) using a
+      consistent API for counters, gauges, timers, and distribution summaries.
+    category: Observability
+    tags:
+      - Metrics
+      - Prometheus
+      - Observability
+
+  - term: Profile
+    definition: >-
+      A named logical grouping of bean definitions and configuration properties that are
+      active only when the specified profile is active. Enables different configurations
+      for development, testing, staging, and production environments.
+    category: Configuration
+    tags:
+      - Environment
+      - Configuration
+
+  - term: ConfigurationProperties
+    definition: >-
+      A Spring Boot annotation that binds external configuration properties (from application.yml
+      or environment variables) to a typed Java object with validation support.
+    category: Configuration
+    tags:
+      - Binding
+      - Type-Safe Configuration
+
+  - term: Spring Initializr
+    definition: >-
+      A web-based project generator at start.spring.io that creates Spring Boot project
+      skeletons with the selected dependencies, build tool, language, and Spring Boot version.
+    category: Developer Tooling
+    tags:
+      - Project Bootstrap
+      - Maven
+      - Gradle
+
+  - term: DevTools
+    definition: >-
+      Spring Boot Developer Tools (spring-boot-devtools) providing automatic application
+      restart on classpath changes, LiveReload browser refresh, and relaxed property
+      defaults for development.
+    category: Developer Tooling
+    tags:
+      - Hot Reload
+      - Development
+
+  - term: Executable JAR
+    definition: >-
+      A Spring Boot application packaged as a single runnable JAR file (fat JAR or uber JAR)
+      containing all dependencies, making deployment as simple as java -jar app.jar.
+    category: Deployment
+    tags:
+      - Packaging
+      - Deployment
+      - Fat JAR
+
+  - term: Spring Application
+    definition: >-
+      The SpringApplication class that bootstraps a Spring application from a main() method,
+      creating the ApplicationContext, registering beans, and triggering auto-configuration.
+    category: Core Concept
+    tags:
+      - Bootstrap
+      - Application Context
+
+  - term: GraalVM Native Image
+    definition: >-
+      Spring Boot's support for compiling applications to native executables using GraalVM,
+      resulting in faster startup times and lower memory consumption compared to JVM deployments.
+    category: Deployment
+    tags:
+      - GraalVM
+      - Native
+      - Performance

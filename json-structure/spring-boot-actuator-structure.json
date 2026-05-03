@@ -1,0 +1,43 @@
+{
+  "name": "Spring Boot Actuator",
+  "description": "Structure documentation for the Spring Boot Actuator API response objects",
+  "version": "3.3.0",
+  "structures": [
+    {
+      "name": "Health",
+      "description": "Application health status and component details",
+      "fields": [
+        { "name": "status", "type": "string", "enum": ["UP", "DOWN", "OUT_OF_SERVICE", "UNKNOWN"], "required": true, "description": "Aggregate health status" },
+        { "name": "components", "type": "object", "required": false, "description": "Map of component name to health component details" },
+        { "name": "details", "type": "object", "required": false, "description": "Additional details (shown-details must be enabled)" }
+      ]
+    },
+    {
+      "name": "MetricResponse",
+      "description": "Micrometer metric measurement response",
+      "fields": [
+        { "name": "name", "type": "string", "required": true, "description": "Metric name" },
+        { "name": "description", "type": "string", "required": false, "description": "Metric description" },
+        { "name": "baseUnit", "type": "string", "required": false, "description": "Base unit of measurement" },
+        { "name": "measurements", "type": "array", "required": true, "description": "List of statistic/value pairs" },
+        { "name": "availableTags", "type": "array", "required": false, "description": "Available dimension tags for filtering" }
+      ]
+    },
+    {
+      "name": "Environment",
+      "description": "Application environment properties from all sources",
+      "fields": [
+        { "name": "activeProfiles", "type": "array", "required": true, "description": "Currently active Spring profiles" },
+        { "name": "propertySources", "type": "array", "required": true, "description": "Ordered list of property sources" }
+      ]
+    },
+    {
+      "name": "LoggerLevel",
+      "description": "Logger configuration and effective level",
+      "fields": [
+        { "name": "configuredLevel", "type": "string", "required": false, "description": "Explicitly configured log level" },
+        { "name": "effectiveLevel", "type": "string", "required": true, "description": "Effective log level (inherited if not configured)" }
+      ]
+    }
+  ]
+}

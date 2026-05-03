@@ -1,0 +1,41 @@
+{
+  "operation": "getMetric",
+  "method": "GET",
+  "path": "/actuator/metrics/jvm.memory.used",
+  "description": "Get JVM memory usage metric",
+  "request": {
+    "pathParameters": {
+      "metricName": "jvm.memory.used"
+    },
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "jvm.memory.used",
+      "description": "The amount of used memory",
+      "baseUnit": "bytes",
+      "measurements": [
+        {
+          "statistic": "VALUE",
+          "value": 412876800
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "area",
+          "values": ["heap", "nonheap"]
+        },
+        {
+          "tag": "id",
+          "values": ["G1 Eden Space", "G1 Old Gen", "G1 Survivor Space", "Metaspace", "CodeHeap 'non-nmethods'"]
+        }
+      ]
+    }
+  }
+}

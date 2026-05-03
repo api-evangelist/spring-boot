@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/spring-boot/json-schema/spring-boot-actuator-health-schema.json",
+  "title": "Spring Boot Actuator Health Response",
+  "description": "JSON Schema for the Spring Boot Actuator /health endpoint response object.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["UP", "DOWN", "OUT_OF_SERVICE", "UNKNOWN"],
+      "description": "Aggregate health status of the application"
+    },
+    "components": {
+      "type": "object",
+      "description": "Health details for each registered health indicator component",
+      "additionalProperties": {
+        "$ref": "#/$defs/HealthComponent"
+      }
+    },
+    "details": {
+      "type": "object",
+      "description": "Additional health details (when show-details is enabled)",
+      "additionalProperties": true
+    }
+  },
+  "required": ["status"],
+  "$defs": {
+    "HealthComponent": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["UP", "DOWN", "OUT_OF_SERVICE", "UNKNOWN"],
+          "description": "Component-level health status"
+        },
+        "details": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Component-specific details"
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/HealthComponent"
+          },
+          "description": "Nested health components"
+        }
+      },
+      "required": ["status"]
+    }
+  }
+}
