@@ -1,238 +1,399 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Spring Boot Application Monitoring"
-  description: "Unified capability for monitoring and managing Spring Boot applications using Actuator endpoints. Enables health checks, metrics collection, log level management, and cache operations for DevOps and SRE workflows."
+  label: Spring Boot Application Monitoring
+  description: Unified capability for monitoring and managing Spring Boot applications using Actuator endpoints. Enables health
+    checks, metrics collection, log level management, and cache operations for DevOps and SRE workflows.
   tags:
-    - Spring Boot
-    - Monitoring
-    - Observability
-    - DevOps
-    - SRE
-    - Health Check
-    - Metrics
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Spring Boot
+  - Monitoring
+  - Observability
+  - DevOps
+  - SRE
+  - Health Check
+  - Metrics
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      SPRING_BOOT_ACTUATOR_BASE_URL: SPRING_BOOT_ACTUATOR_BASE_URL
-
+- namespace: env
+  keys:
+    SPRING_BOOT_ACTUATOR_BASE_URL: SPRING_BOOT_ACTUATOR_BASE_URL
 capability:
   consumes:
-    - import: spring-boot-actuator
-      location: ./shared/spring-boot-actuator.yaml
-
+  - type: http
+    namespace: spring-boot-actuator
+    baseUri: '{{SPRING_BOOT_ACTUATOR_BASE_URL}}'
+    description: Spring Boot Actuator management endpoints
+    resources:
+    - name: health
+      path: /health
+      description: Application health status
+      operations:
+      - name: get-health
+        method: GET
+        description: Get application health status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-health-component
+        method: GET
+        description: Get health status for a specific component
+        inputParameters:
+        - name: component
+          in: path
+          type: string
+          required: true
+          description: Health component name (e.g., db, diskSpace)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: metrics
+      path: /metrics
+      description: Application metrics
+      operations:
+      - name: list-metrics
+        method: GET
+        description: List available metric names
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-metric
+        method: GET
+        description: Get metric measurements by name
+        inputParameters:
+        - name: metricName
+          in: path
+          type: string
+          required: true
+          description: Metric name (e.g., jvm.memory.used)
+        - name: tag
+          in: query
+          type: array
+          required: false
+          description: Tag filter in KEY:VALUE format
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: environment
+      path: /env
+      description: Application environment properties
+      operations:
+      - name: get-environment
+        method: GET
+        description: Get all environment properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-environment-property
+        method: GET
+        description: Get specific environment property value
+        inputParameters:
+        - name: property
+          in: path
+          type: string
+          required: true
+          description: Property key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: loggers
+      path: /loggers
+      description: Logger configuration management
+      operations:
+      - name: list-loggers
+        method: GET
+        description: List all loggers and their levels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-logger
+        method: GET
+        description: Get logger level by name
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: Logger name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: set-logger-level
+        method: POST
+        description: Set logger level at runtime
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: Logger name
+        body:
+          type: json
+          data:
+            configuredLevel: '{{tools.level}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: info
+      path: /info
+      description: Application information
+      operations:
+      - name: get-info
+        method: GET
+        description: Get application info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: caches
+      path: /caches
+      description: Application cache management
+      operations:
+      - name: list-caches
+        method: GET
+        description: List application caches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: evict-all-caches
+        method: DELETE
+        description: Evict all caches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: application-monitoring-api
-      description: "Unified REST API for Spring Boot application monitoring and management."
-      resources:
-        - path: /v1/health
-          name: health
-          description: "Application health monitoring"
-          operations:
-            - method: GET
-              name: get-health
-              description: "Get comprehensive application health status"
-              call: "spring-boot-actuator.get-health"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/health/{component}
-          name: component-health
-          description: "Component-level health status"
-          operations:
-            - method: GET
-              name: get-component-health
-              description: "Get health status for a specific component (db, redis, diskSpace)"
-              call: "spring-boot-actuator.get-health-component"
-              with:
-                component: "rest.component"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/metrics
-          name: metrics
-          description: "Application metrics overview"
-          operations:
-            - method: GET
-              name: list-metrics
-              description: "List all available metric names"
-              call: "spring-boot-actuator.list-metrics"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/metrics/{metricName}
-          name: metric-detail
-          description: "Detailed metric measurements"
-          operations:
-            - method: GET
-              name: get-metric
-              description: "Get measurements for a specific metric"
-              call: "spring-boot-actuator.get-metric"
-              with:
-                metricName: "rest.metricName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/loggers
-          name: loggers
-          description: "Logger configuration management"
-          operations:
-            - method: GET
-              name: list-loggers
-              description: "List all loggers and their levels"
-              call: "spring-boot-actuator.list-loggers"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/loggers/{name}
-          name: logger-detail
-          description: "Individual logger management"
-          operations:
-            - method: GET
-              name: get-logger
-              description: "Get logger level by name"
-              call: "spring-boot-actuator.get-logger"
-              with:
-                name: "rest.name"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: set-logger-level
-              description: "Set logger level at runtime"
-              call: "spring-boot-actuator.set-logger-level"
-              with:
-                name: "rest.name"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/environment
-          name: environment
-          description: "Environment properties"
-          operations:
-            - method: GET
-              name: get-environment
-              description: "Get all environment properties"
-              call: "spring-boot-actuator.get-environment"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/caches
-          name: caches
-          description: "Cache management"
-          operations:
-            - method: GET
-              name: list-caches
-              description: "List all application caches"
-              call: "spring-boot-actuator.list-caches"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: evict-all-caches
-              description: "Evict all caches"
-              call: "spring-boot-actuator.evict-all-caches"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9080
-      namespace: application-monitoring-mcp
-      transport: http
-      description: "MCP server for AI-assisted Spring Boot application monitoring and incident response."
-      tools:
-        - name: check-application-health
-          description: "Check the overall health of a Spring Boot application including all health indicator components (database, cache, disk space, custom indicators)"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.get-health"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: check-component-health
-          description: "Check health status for a specific application component (db, redis, diskSpace, custom)"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.get-health-component"
-          with:
-            component: "tools.component"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-jvm-metrics
-          description: "Get JVM metrics including memory usage, garbage collection, thread counts, and CPU usage"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.get-metric"
-          with:
-            metricName: "tools.metricName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-available-metrics
-          description: "List all Micrometer metric names available on this Spring Boot instance"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.list-metrics"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-environment-properties
-          description: "Get all active environment properties including system, application.properties, profile-specific, and command-line overrides"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.get-environment"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: adjust-log-level
-          description: "Dynamically adjust a logger's log level at runtime (TRACE, DEBUG, INFO, WARN, ERROR, OFF) without application restart"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: true
-          call: "spring-boot-actuator.set-logger-level"
-          with:
-            name: "tools.loggerName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-loggers
-          description: "List all registered loggers and their current configured and effective log levels"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.list-loggers"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-application-info
-          description: "Get application metadata including build version, git commit info, and custom info contributors"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spring-boot-actuator.get-info"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: evict-all-caches
-          description: "Evict all application caches to force a full cache refresh"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: true
-          call: "spring-boot-actuator.evict-all-caches"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: application-monitoring-api
+    description: Unified REST API for Spring Boot application monitoring and management.
+    resources:
+    - path: /v1/health
+      name: health
+      description: Application health monitoring
+      operations:
+      - method: GET
+        name: get-health
+        description: Get comprehensive application health status
+        call: spring-boot-actuator.get-health
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/health/{component}
+      name: component-health
+      description: Component-level health status
+      operations:
+      - method: GET
+        name: get-component-health
+        description: Get health status for a specific component (db, redis, diskSpace)
+        call: spring-boot-actuator.get-health-component
+        with:
+          component: rest.component
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics
+      name: metrics
+      description: Application metrics overview
+      operations:
+      - method: GET
+        name: list-metrics
+        description: List all available metric names
+        call: spring-boot-actuator.list-metrics
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/{metricName}
+      name: metric-detail
+      description: Detailed metric measurements
+      operations:
+      - method: GET
+        name: get-metric
+        description: Get measurements for a specific metric
+        call: spring-boot-actuator.get-metric
+        with:
+          metricName: rest.metricName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/loggers
+      name: loggers
+      description: Logger configuration management
+      operations:
+      - method: GET
+        name: list-loggers
+        description: List all loggers and their levels
+        call: spring-boot-actuator.list-loggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/loggers/{name}
+      name: logger-detail
+      description: Individual logger management
+      operations:
+      - method: GET
+        name: get-logger
+        description: Get logger level by name
+        call: spring-boot-actuator.get-logger
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: set-logger-level
+        description: Set logger level at runtime
+        call: spring-boot-actuator.set-logger-level
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/environment
+      name: environment
+      description: Environment properties
+      operations:
+      - method: GET
+        name: get-environment
+        description: Get all environment properties
+        call: spring-boot-actuator.get-environment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/caches
+      name: caches
+      description: Cache management
+      operations:
+      - method: GET
+        name: list-caches
+        description: List all application caches
+        call: spring-boot-actuator.list-caches
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: evict-all-caches
+        description: Evict all caches
+        call: spring-boot-actuator.evict-all-caches
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9080
+    namespace: application-monitoring-mcp
+    transport: http
+    description: MCP server for AI-assisted Spring Boot application monitoring and incident response.
+    tools:
+    - name: check-application-health
+      description: Check the overall health of a Spring Boot application including all health indicator components (database,
+        cache, disk space, custom indicators)
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.get-health
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-component-health
+      description: Check health status for a specific application component (db, redis, diskSpace, custom)
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.get-health-component
+      with:
+        component: tools.component
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-jvm-metrics
+      description: Get JVM metrics including memory usage, garbage collection, thread counts, and CPU usage
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.get-metric
+      with:
+        metricName: tools.metricName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-available-metrics
+      description: List all Micrometer metric names available on this Spring Boot instance
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.list-metrics
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-environment-properties
+      description: Get all active environment properties including system, application.properties, profile-specific, and command-line
+        overrides
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.get-environment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adjust-log-level
+      description: Dynamically adjust a logger's log level at runtime (TRACE, DEBUG, INFO, WARN, ERROR, OFF) without application
+        restart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spring-boot-actuator.set-logger-level
+      with:
+        name: tools.loggerName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-loggers
+      description: List all registered loggers and their current configured and effective log levels
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.list-loggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-application-info
+      description: Get application metadata including build version, git commit info, and custom info contributors
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spring-boot-actuator.get-info
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: evict-all-caches
+      description: Evict all application caches to force a full cache refresh
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spring-boot-actuator.evict-all-caches
+      outputParameters:
+      - type: object
+        mapping: $.
