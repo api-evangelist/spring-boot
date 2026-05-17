@@ -90,7 +90,7 @@ apis:
         url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/
       - type: API Guide
         url: https://docs.spring.io/spring-data/rest/docs/current/api/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://spring.io/guides/gs/accessing-data-rest/
   - aid: spring-boot:spring-boot-admin
     name: Spring Boot Admin API
@@ -108,9 +108,9 @@ apis:
     properties:
       - type: Documentation
         url: https://codecentric.github.io/spring-boot-admin/current/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/codecentric/spring-boot-admin
-      - type: Getting Started
+      - type: GettingStarted
         url: https://codecentric.github.io/spring-boot-admin/current/#getting-started
 common:
   - type: Documentation
@@ -119,13 +119,13 @@ common:
     url: https://spring.io/projects/spring-boot
   - type: GitHub
     url: https://github.com/spring-projects/spring-boot
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/spring-projects
   - type: Issues
     url: https://github.com/spring-projects/spring-boot/issues
   - type: Releases
     url: https://github.com/spring-projects/spring-boot/releases
-  - type: Stack Overflow
+  - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/spring-boot
   - type: Blog
     url: https://spring.io/blog/category/spring-boot
