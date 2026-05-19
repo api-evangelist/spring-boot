@@ -1,0 +1,133 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Caches
+  description: 'Spring Boot Actuator API — Caches. 3 operations. Lead operation: Spring Boot List application caches. Self-contained
+    Naftiko capability covering one Spring Boot business surface.'
+  tags:
+  - Spring Boot
+  - Caches
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_BOOT_API_KEY: SPRING_BOOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: actuator-caches
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Caches business capability. Self-contained, no shared references.
+    resources:
+    - name: caches
+      path: /caches
+      operations:
+      - name: getcaches
+        method: GET
+        description: Spring Boot List application caches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: evictallcaches
+        method: DELETE
+        description: Spring Boot Evict all caches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: caches-cacheName
+      path: /caches/{cacheName}
+      operations:
+      - name: evictcache
+        method: DELETE
+        description: Spring Boot Evict specific cache
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cacheName
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: actuator-caches-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Caches. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/caches
+      name: caches
+      description: REST surface for caches.
+      operations:
+      - method: GET
+        name: getcaches
+        description: Spring Boot List application caches
+        call: actuator-caches.getcaches
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: evictallcaches
+        description: Spring Boot Evict all caches
+        call: actuator-caches.evictallcaches
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/caches/{cachename}
+      name: caches-cachename
+      description: REST surface for caches-cacheName.
+      operations:
+      - method: DELETE
+        name: evictcache
+        description: Spring Boot Evict specific cache
+        call: actuator-caches.evictcache
+        with:
+          cacheName: rest.cacheName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: actuator-caches-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Caches. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: spring-boot-list-application-caches
+      description: Spring Boot List application caches
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: actuator-caches.getcaches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: spring-boot-evict-all-caches
+      description: Spring Boot Evict all caches
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: actuator-caches.evictallcaches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: spring-boot-evict-specific-cache
+      description: Spring Boot Evict specific cache
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: actuator-caches.evictcache
+      with:
+        cacheName: tools.cacheName
+      outputParameters:
+      - type: object
+        mapping: $.

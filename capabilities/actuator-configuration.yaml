@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Configuration
+  description: 'Spring Boot Actuator API — Configuration. 1 operations. Lead operation: Spring Boot Configuration properties
+    report. Self-contained Naftiko capability covering one Spring Boot business surface.'
+  tags:
+  - Spring Boot
+  - Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_BOOT_API_KEY: SPRING_BOOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: actuator-configuration
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Configuration business capability. Self-contained, no shared references.
+    resources:
+    - name: configprops
+      path: /configprops
+      operations:
+      - name: getconfigurationproperties
+        method: GET
+        description: Spring Boot Configuration properties report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: actuator-configuration-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Configuration. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/configprops
+      name: configprops
+      description: REST surface for configprops.
+      operations:
+      - method: GET
+        name: getconfigurationproperties
+        description: Spring Boot Configuration properties report
+        call: actuator-configuration.getconfigurationproperties
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: actuator-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Configuration. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: spring-boot-configuration-properties-report
+      description: Spring Boot Configuration properties report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: actuator-configuration.getconfigurationproperties
+      outputParameters:
+      - type: object
+        mapping: $.

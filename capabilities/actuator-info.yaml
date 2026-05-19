@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Info
+  description: 'Spring Boot Actuator API — Info. 1 operations. Lead operation: Spring Boot Application info. Self-contained
+    Naftiko capability covering one Spring Boot business surface.'
+  tags:
+  - Spring Boot
+  - Info
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_BOOT_API_KEY: SPRING_BOOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: actuator-info
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Info business capability. Self-contained, no shared references.
+    resources:
+    - name: info
+      path: /info
+      operations:
+      - name: getinfo
+        method: GET
+        description: Spring Boot Application info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: actuator-info-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Info. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/info
+      name: info
+      description: REST surface for info.
+      operations:
+      - method: GET
+        name: getinfo
+        description: Spring Boot Application info
+        call: actuator-info.getinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: actuator-info-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Info. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: spring-boot-application-info
+      description: Spring Boot Application info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: actuator-info.getinfo
+      outputParameters:
+      - type: object
+        mapping: $.
