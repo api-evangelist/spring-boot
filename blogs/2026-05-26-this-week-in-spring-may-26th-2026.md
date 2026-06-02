@@ -1,0 +1,8 @@
+---
+title: This Week in Spring - May 26th, 2026
+url: https://spring.io/blog/2026/05/26/this-week-in-spring-may-26-2026
+date: '2026-05-26'
+author: joshlong
+feed_url: https://spring.io/blog.atom
+---
+Hi, Spring fans! Welcome to another installment of This Week in Spring ! I'm in Coimbra, Portugal, where I just did my usual shtick on the latest and greatest in Spring Framework 7.x, Spring Boot 4.x, and Spring AI 2.x. It was a ton of fun, and I want to thank everybody who came out. Last week I was in Munich, Germany, where I had the privilege of doing a segment in the opening keynote, along with folks from Uber, Anthropic, Google, and more, and then I did a standalone session as well. A huge ton of fun, too! And in between it all, the days that have passed? Amazing, as always, and we will count the reasons why in this week's roundup, as always. Purnima Padmanaban, Vice President at the big ol' Tanzu division of Broadcom, has an amazing post talking about how the Spring team and Broadcom have raced to meet the new realities of security in 2026 . Our pal and Spring legend Craig Walls has a nice post on MCP logging , continuing his amazing series of Spring AI recipes on LinkedIn! Just another average user experiencing the joy of using Spring Boot after using Node . The numbers are pretty telling: infrastructure costs, developer production issue triage time, and crashes all went down dramatically on Spring Boot. Speaking of the Kotlin Conf 2026 keynote, check out the recording from last week! I loved this discussion with my friend and colleague DaShaun Carter on patching Spring applications Spring AI 1.0.8, 1.1.7, 2.0.0-M7 are available now Dovetailing with Kotlin Conf, I had a chance to talk to Kotlin and JetBrains luminary Hadi Hariri
