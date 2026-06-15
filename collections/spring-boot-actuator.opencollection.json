@@ -1,0 +1,375 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Application health information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health"
+          },
+          "docs": "Returns the health status of the application and its components"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Health for a specific component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health/:component",
+            "params": [
+              {
+                "name": "component",
+                "value": "",
+                "type": "path",
+                "description": "Health component name (e.g., db, diskSpace, redis)"
+              }
+            ]
+          },
+          "docs": "Spring Boot Health for a specific component"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Application info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/info"
+          },
+          "docs": "Returns arbitrary application info from InfoContributor beans"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List available metric names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics"
+          },
+          "docs": "Spring Boot List available metric names"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Get metric measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics/:metricName",
+            "params": [
+              {
+                "name": "metricName",
+                "value": "",
+                "type": "path",
+                "description": "Metric name (e.g., jvm.memory.used, http.server.requests)"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag filter in KEY:VALUE format"
+              }
+            ]
+          },
+          "docs": "Spring Boot Get metric measurements"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Prometheus metrics scrape endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/prometheus"
+          },
+          "docs": "Returns metrics in Prometheus exposition format"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Application environment properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env"
+          },
+          "docs": "Returns all environment properties including system, application, and profile-specific"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Specific environment property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env/:property",
+            "params": [
+              {
+                "name": "property",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Spring Boot Specific environment property value"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List all Spring beans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/beans"
+          },
+          "docs": "Returns all beans in the application context with their dependencies"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Request mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/mappings"
+          },
+          "docs": "Returns all @RequestMapping paths in the application"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Scheduled tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/scheduledtasks"
+          },
+          "docs": "Spring Boot Scheduled tasks"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Configuration properties report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/configprops"
+          },
+          "docs": "Returns all @ConfigurationProperties beans and their bound values"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List all loggers and their levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/loggers"
+          },
+          "docs": "Spring Boot List all loggers and their levels"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Get logger level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/loggers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Spring Boot Get logger level"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Set logger level at runtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/actuator/loggers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Spring Boot Set logger level at runtime"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "JVM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Thread dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/threaddump"
+          },
+          "docs": "Returns a snapshot of all threads in the JVM"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Heap dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/heapdump"
+          },
+          "docs": "Returns an hprof heap dump file"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Caches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List application caches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/caches"
+          },
+          "docs": "Spring Boot List application caches"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Evict all caches",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/actuator/caches"
+          },
+          "docs": "Spring Boot Evict all caches"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Evict specific cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/actuator/caches/:cacheName",
+            "params": [
+              {
+                "name": "cacheName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Spring Boot Evict specific cache"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lifecycle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Graceful shutdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/actuator/shutdown"
+          },
+          "docs": "Shuts down the application (must be explicitly enabled)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
