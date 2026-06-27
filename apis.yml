@@ -117,7 +117,7 @@ common:
     url: https://github.com/spring-projects
   - type: Issues
     url: https://github.com/spring-projects/spring-boot/issues
-  - type: Releases
+  - type: ReleaseNotes
     url: https://github.com/spring-projects/spring-boot/releases
   - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/spring-boot
