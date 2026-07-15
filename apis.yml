@@ -107,6 +107,8 @@ apis:
       - type: GettingStarted
         url: https://codecentric.github.io/spring-boot-admin/current/#getting-started
 common:
+  - type: AgenticAccess
+    url: agentic-access/spring-boot-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/spring-boot-vulnerability-disclosure.yml
   - type: DomainSecurity
