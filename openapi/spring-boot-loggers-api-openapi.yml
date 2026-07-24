@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application Loggers API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Loggers
+paths:
+  /loggers:
+    get:
+      operationId: getLoggers
+      summary: Spring Boot List all loggers and their levels
+      tags:
+      - Loggers
+      responses:
+        '200':
+          description: Logger configurations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  levels:
+                    type: array
+                    items:
+                      type: string
+                  loggers:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/LoggerLevel'
+  /loggers/{name}:
+    get:
+      operationId: getLogger
+      summary: Spring Boot Get logger level
+      tags:
+      - Loggers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Logger level
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoggerLevel'
+    post:
+      operationId: setLoggerLevel
+      summary: Spring Boot Set logger level at runtime
+      tags:
+      - Loggers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuredLevel:
+                  type: string
+                  enum:
+                  - TRACE
+                  - DEBUG
+                  - INFO
+                  - WARN
+                  - ERROR
+                  - false
+      responses:
+        '204':
+          description: Logger level updated
+components:
+  schemas:
+    LoggerLevel:
+      type: object
+      properties:
+        configuredLevel:
+          type: string
+        effectiveLevel:
+          type: string

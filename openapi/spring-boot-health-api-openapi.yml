@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application Health API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Health
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Spring Boot Application health information
+      description: Returns the health status of the application and its components
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Application is healthy
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/Health'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '503':
+          description: Application is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /health/{component}:
+    get:
+      operationId: getHealthComponent
+      summary: Spring Boot Health for a specific component
+      tags:
+      - Health
+      parameters:
+      - name: component
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Health component name (e.g., db, diskSpace, redis)
+      responses:
+        '200':
+          description: Component health details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '404':
+          description: Component not found
+components:
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - UP
+          - DOWN
+          - OUT_OF_SERVICE
+          - UNKNOWN
+          description: Aggregate health status
+        components:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              status:
+                type: string
+              details:
+                type: object
+                additionalProperties: true
+        details:
+          type: object
+          additionalProperties: true

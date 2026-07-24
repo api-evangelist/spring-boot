@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application Environment API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Environment
+paths:
+  /env:
+    get:
+      operationId: getEnvironment
+      summary: Spring Boot Application environment properties
+      description: Returns all environment properties including system, application, and profile-specific
+      tags:
+      - Environment
+      responses:
+        '200':
+          description: Environment properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+  /env/{property}:
+    get:
+      operationId: getEnvironmentProperty
+      summary: Spring Boot Specific environment property value
+      tags:
+      - Environment
+      parameters:
+      - name: property
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Property value and sources
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Environment:
+      type: object
+      properties:
+        activeProfiles:
+          type: array
+          items:
+            type: string
+        propertySources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              properties:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                    origin:
+                      type: string

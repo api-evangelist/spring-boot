@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Application
+paths:
+  /beans:
+    get:
+      operationId: getBeans
+      summary: Spring Boot List all Spring beans
+      description: Returns all beans in the application context with their dependencies
+      tags:
+      - Application
+      responses:
+        '200':
+          description: Bean definitions
+          content:
+            application/json:
+              schema:
+                type: object
+  /mappings:
+    get:
+      operationId: getMappings
+      summary: Spring Boot Request mappings
+      description: Returns all @RequestMapping paths in the application
+      tags:
+      - Application
+      responses:
+        '200':
+          description: Request mapping details
+          content:
+            application/json:
+              schema:
+                type: object
+  /scheduledtasks:
+    get:
+      operationId: getScheduledTasks
+      summary: Spring Boot Scheduled tasks
+      tags:
+      - Application
+      responses:
+        '200':
+          description: Scheduled task details
+          content:
+            application/json:
+              schema:
+                type: object

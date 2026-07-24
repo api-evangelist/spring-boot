@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application Metrics API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Metrics
+paths:
+  /metrics:
+    get:
+      operationId: listMetrics
+      summary: Spring Boot List available metric names
+      tags:
+      - Metrics
+      responses:
+        '200':
+          description: List of metric names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  names:
+                    type: array
+                    items:
+                      type: string
+  /metrics/{metricName}:
+    get:
+      operationId: getMetric
+      summary: Spring Boot Get metric measurements
+      tags:
+      - Metrics
+      parameters:
+      - name: metricName
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Metric name (e.g., jvm.memory.used, http.server.requests)
+      - name: tag
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Tag filter in KEY:VALUE format
+      responses:
+        '200':
+          description: Metric measurements and available tags
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+        '404':
+          description: Metric not found
+  /prometheus:
+    get:
+      operationId: getPrometheus
+      summary: Spring Boot Prometheus metrics scrape endpoint
+      description: Returns metrics in Prometheus exposition format
+      tags:
+      - Metrics
+      responses:
+        '200':
+          description: Prometheus metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    MetricResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        baseUnit:
+          type: string
+        measurements:
+          type: array
+          items:
+            type: object
+            properties:
+              statistic:
+                type: string
+                enum:
+                - TOTAL
+                - TOTAL_TIME
+                - COUNT
+                - MAX
+                - VALUE
+                - ACTIVE_TASKS
+                - DURATION
+              value:
+                type: number
+        availableTags:
+          type: array
+          items:
+            type: object
+            properties:
+              tag:
+                type: string
+              values:
+                type: array
+                items:
+                  type: string

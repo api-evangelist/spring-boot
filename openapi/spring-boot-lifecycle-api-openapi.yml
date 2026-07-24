@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application Lifecycle API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Lifecycle
+paths:
+  /shutdown:
+    post:
+      operationId: shutdown
+      summary: Spring Boot Graceful shutdown
+      description: Shuts down the application (must be explicitly enabled)
+      tags:
+      - Lifecycle
+      responses:
+        '200':
+          description: Shutdown initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

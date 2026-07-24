@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Spring Boot Actuator Application Caches API
+  description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
+  version: 3.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-boot
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Actuator base path
+tags:
+- name: Caches
+paths:
+  /caches:
+    get:
+      operationId: getCaches
+      summary: Spring Boot List application caches
+      tags:
+      - Caches
+      responses:
+        '200':
+          description: Cache managers and caches
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      operationId: evictAllCaches
+      summary: Spring Boot Evict all caches
+      tags:
+      - Caches
+      responses:
+        '204':
+          description: All caches evicted
+  /caches/{cacheName}:
+    delete:
+      operationId: evictCache
+      summary: Spring Boot Evict specific cache
+      tags:
+      - Caches
+      parameters:
+      - name: cacheName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Cache evicted
+        '404':
+          description: Cache not found
