@@ -1,0 +1,32 @@
+{
+  "provider": "spring-boot",
+  "sources": [
+    "spring-boot-application-api-openapi.yml",
+    "spring-boot-caches-api-openapi.yml",
+    "spring-boot-configuration-api-openapi.yml",
+    "spring-boot-environment-api-openapi.yml",
+    "spring-boot-health-api-openapi.yml",
+    "spring-boot-info-api-openapi.yml",
+    "spring-boot-jvm-api-openapi.yml",
+    "spring-boot-lifecycle-api-openapi.yml",
+    "spring-boot-loggers-api-openapi.yml",
+    "spring-boot-metrics-api-openapi.yml"
+  ],
+  "outputs": [
+    "spring-boot-application-api-openapi.yml",
+    "spring-boot-caches-api-openapi.yml",
+    "spring-boot-configuration-api-openapi.yml",
+    "spring-boot-environment-api-openapi.yml",
+    "spring-boot-health-api-openapi.yml",
+    "spring-boot-info-api-openapi.yml",
+    "spring-boot-jvm-api-openapi.yml",
+    "spring-boot-lifecycle-api-openapi.yml",
+    "spring-boot-loggers-api-openapi.yml",
+    "spring-boot-metrics-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

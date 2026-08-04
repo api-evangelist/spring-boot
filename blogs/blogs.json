@@ -10,19 +10,13 @@
     },
     {
       "source": "https://stackoverflow.com/feeds/tag?tagnames=spring-boot&sort=newest",
-      "feed_url": "https://stackoverflow.com/feeds/tag?tagnames=spring-boot&sort=newest",
-      "title": "",
-      "saved": 1,
-      "method": "feed"
+      "error": "HTTPError"
     },
     {
       "source": "https://stackoverflow.com/questions/tagged/spring-boot",
-      "feed_url": "https://stackoverflow.com/feeds/tag?tagnames=spring-boot&sort=newest",
-      "title": "",
-      "saved": 0,
-      "method": "discovered"
+      "error": "HTTPError"
     }
   ],
-  "post_count": 97,
-  "fetched": "2026-07-11T11:50:51Z"
+  "post_count": 118,
+  "fetched": "2026-08-01T15:49:00Z"
 }
