@@ -309,6 +309,9 @@ apis:
   - type: SpectralRules
     url: rules/spring-boot-actuator-rules.yml
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/codecentric/spring-boot-admin/blob/master/LICENSE
   - type: AgenticAccess
     url: agentic-access/spring-boot-agentic-access.yml
   - type: VulnerabilityDisclosure
