@@ -5,7 +5,7 @@
       "source": "https://spring.io/blog.atom",
       "feed_url": "https://spring.io/blog.atom",
       "title": "",
-      "saved": 0,
+      "saved": 3,
       "method": "feed"
     },
     {
@@ -13,6 +13,6 @@
       "error": "HTTPError"
     }
   ],
-  "post_count": 119,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 122,
+  "fetched": "2026-08-15T12:11:08Z"
 }
