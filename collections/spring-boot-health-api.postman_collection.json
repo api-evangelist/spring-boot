@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "135ed393-367d-44f1-a511-595ca14477ac",
+      "name": "Health",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27dab9ee-62a2-46ff-bce6-b649a489d8dc",
+          "name": "Spring Boot Application health information",
+          "request": {
+            "name": "Spring Boot Application health information",
+            "description": {
+              "content": "Returns the health status of the application and its components",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcf1b14c-ebe6-45a4-9fac-30f8728b78a0",
+              "name": "Application is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNKNOWN\",\n  \"components\": {\n    \"key_0\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": 3485.364756955769,\n        \"key_1\": 4782.760490558708\n      }\n    },\n    \"key_1\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": 9633\n      }\n    },\n    \"key_2\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": true\n      }\n    }\n  },\n  \"details\": {\n    \"key_0\": false,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bc459bf-e448-4dba-9d32-22a4d6de91e7",
+              "name": "Application is unhealthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNKNOWN\",\n  \"components\": {\n    \"key_0\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": 3485.364756955769,\n        \"key_1\": 4782.760490558708\n      }\n    },\n    \"key_1\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": 9633\n      }\n    },\n    \"key_2\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": true\n      }\n    }\n  },\n  \"details\": {\n    \"key_0\": false,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d6bb309-3aba-4493-b844-622c78ebea58",
+          "name": "Spring Boot Health for a specific component",
+          "request": {
+            "name": "Spring Boot Health for a specific component",
+            "description": {},
+            "url": {
+              "path": [
+                "health",
+                ":component"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "component",
+                  "description": "(Required) Health component name (e.g., db, diskSpace, redis)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01c0d08f-a458-4538-8ac7-85fb69845daa",
+              "name": "Component health details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health",
+                    ":component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "component",
+                      "description": "(Required) Health component name (e.g., db, diskSpace, redis)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNKNOWN\",\n  \"components\": {\n    \"key_0\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": 3485.364756955769,\n        \"key_1\": 4782.760490558708\n      }\n    },\n    \"key_1\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": 9633\n      }\n    },\n    \"key_2\": {\n      \"status\": \"string\",\n      \"details\": {\n        \"key_0\": true\n      }\n    }\n  },\n  \"details\": {\n    \"key_0\": false,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "884ed948-8e31-4643-9c58-c9de9e44ef38",
+              "name": "Component not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health",
+                    ":component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "component",
+                      "description": "(Required) Health component name (e.g., db, diskSpace, redis)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2492fbca-1056-4fed-9e2c-309d1ea682f1",
+    "name": "Spring Boot Actuator Application Health API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application Caches API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Caches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List application caches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/caches"
+          },
+          "docs": "Spring Boot List application caches"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Evict all caches",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/actuator/caches"
+          },
+          "docs": "Spring Boot Evict all caches"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Evict specific cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/actuator/caches/:cacheName",
+            "params": [
+              {
+                "name": "cacheName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Spring Boot Evict specific cache"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

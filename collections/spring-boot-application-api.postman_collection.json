@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "f6cbc3f6-d176-4686-a3ae-31ef7c713776",
+      "name": "Application",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d76503e9-f589-4c47-b97a-282a6a6deae8",
+          "name": "Spring Boot List all Spring beans",
+          "request": {
+            "name": "Spring Boot List all Spring beans",
+            "description": {
+              "content": "Returns all beans in the application context with their dependencies",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "beans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55f7de59-3e1c-40a0-becf-e9da5a025660",
+              "name": "Bean definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "beans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72ca9d55-1662-41f4-b17d-3db77158feb1",
+          "name": "Spring Boot Request mappings",
+          "request": {
+            "name": "Spring Boot Request mappings",
+            "description": {
+              "content": "Returns all @RequestMapping paths in the application",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45f11416-ffd7-4ded-9185-dac69ad60af0",
+              "name": "Request mapping details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e54b3b0-af83-46a5-a762-129db046d140",
+          "name": "Spring Boot Scheduled tasks",
+          "request": {
+            "name": "Spring Boot Scheduled tasks",
+            "description": {},
+            "url": {
+              "path": [
+                "scheduledtasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7678ef36-a189-4824-b2f2-7a40b7e7e512",
+              "name": "Scheduled task details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheduledtasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d25c006b-eb67-4c63-b413-5db31cdb4685",
+    "name": "Spring Boot Actuator Application API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

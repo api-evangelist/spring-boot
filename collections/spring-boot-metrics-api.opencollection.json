@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application Metrics API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List available metric names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics"
+          },
+          "docs": "Spring Boot List available metric names"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Get metric measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics/:metricName",
+            "params": [
+              {
+                "name": "metricName",
+                "value": "",
+                "type": "path",
+                "description": "Metric name (e.g., jvm.memory.used, http.server.requests)"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Tag filter in KEY:VALUE format"
+              }
+            ]
+          },
+          "docs": "Spring Boot Get metric measurements"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Prometheus metrics scrape endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/prometheus"
+          },
+          "docs": "Returns metrics in Prometheus exposition format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application Loggers API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List all loggers and their levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/loggers"
+          },
+          "docs": "Spring Boot List all loggers and their levels"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Get logger level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/loggers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Spring Boot Get logger level"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Set logger level at runtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/actuator/loggers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Spring Boot Set logger level at runtime"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "c7a33cc1-baf1-4a5c-9a60-a3322ee1811b",
+      "name": "Info",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ad245cc-b604-44ca-b370-627acbae7362",
+          "name": "Spring Boot Application info",
+          "request": {
+            "name": "Spring Boot Application info",
+            "description": {
+              "content": "Returns arbitrary application info from InfoContributor beans",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2023b48-5e2a-4bdf-9fe1-a358eb5e6eb1",
+              "name": "Application information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": false,\n  \"key_2\": 6630\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a825d6d8-dc02-4689-b78a-1f63cfe0e1e2",
+    "name": "Spring Boot Actuator Application Info API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

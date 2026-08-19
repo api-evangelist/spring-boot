@@ -1,0 +1,323 @@
+{
+  "item": [
+    {
+      "id": "7e23eea5-2e66-4296-b387-aed1b3c3a1bb",
+      "name": "Metrics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5231490-8240-427f-a5f6-b3b1e49773c6",
+          "name": "Spring Boot List available metric names",
+          "request": {
+            "name": "Spring Boot List available metric names",
+            "description": {},
+            "url": {
+              "path": [
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5dd4e335-7ba5-421d-8e54-07f45abaa6bf",
+              "name": "List of metric names",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"names\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "665049b7-927d-4b65-9f44-c9b6ecdc9367",
+          "name": "Spring Boot Get metric measurements",
+          "request": {
+            "name": "Spring Boot Get metric measurements",
+            "description": {},
+            "url": {
+              "path": [
+                "metrics",
+                ":metricName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Tag filter in KEY:VALUE format"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Tag filter in KEY:VALUE format"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "metricName",
+                  "description": "(Required) Metric name (e.g., jvm.memory.used, http.server.requests)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "007d4b34-ca93-4973-8cc0-a87f5ff96827",
+              "name": "Metric measurements and available tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    ":metricName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metricName",
+                      "description": "(Required) Metric name (e.g., jvm.memory.used, http.server.requests)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"baseUnit\": \"string\",\n  \"measurements\": [\n    {\n      \"statistic\": \"ACTIVE_TASKS\",\n      \"value\": 2142.396125752084\n    },\n    {\n      \"statistic\": \"DURATION\",\n      \"value\": 4022.2016298508756\n    }\n  ],\n  \"availableTags\": [\n    {\n      \"tag\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"tag\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd3358ca-8d0f-4806-992f-657529e6f9f6",
+              "name": "Metric not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    ":metricName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metricName",
+                      "description": "(Required) Metric name (e.g., jvm.memory.used, http.server.requests)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4778871-748f-4bd0-837a-7ae4ca050db0",
+          "name": "Spring Boot Prometheus metrics scrape endpoint",
+          "request": {
+            "name": "Spring Boot Prometheus metrics scrape endpoint",
+            "description": {
+              "content": "Returns metrics in Prometheus exposition format",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prometheus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54683c0d-e83f-4ff4-88ce-7275a042f612",
+              "name": "Prometheus metrics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prometheus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9ac67547-a635-42eb-acd2-809b4f47bda9",
+    "name": "Spring Boot Actuator Application Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

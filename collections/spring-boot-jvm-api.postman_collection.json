@@ -1,0 +1,172 @@
+{
+  "item": [
+    {
+      "id": "f092f9ee-6f75-43a8-975c-7ec03f67b419",
+      "name": "JVM",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0d51f45-2258-4b62-b391-dd42f5a0d85a",
+          "name": "Spring Boot Thread dump",
+          "request": {
+            "name": "Spring Boot Thread dump",
+            "description": {
+              "content": "Returns a snapshot of all threads in the JVM",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threaddump"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82780769-1d1f-4058-a7d9-dbd747598b56",
+              "name": "Thread dump",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threaddump"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff46e57b-0b89-4f5c-9ca3-b5ea4b1a9d0f",
+          "name": "Spring Boot Heap dump",
+          "request": {
+            "name": "Spring Boot Heap dump",
+            "description": {
+              "content": "Returns an hprof heap dump file",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "heapdump"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a64c06a2-6c79-4d39-b12b-6a8f696d5dd3",
+              "name": "Heap dump binary file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "heapdump"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c3e46ecb-215d-41b7-a010-e130d618b466",
+    "name": "Spring Boot Actuator Application JVM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

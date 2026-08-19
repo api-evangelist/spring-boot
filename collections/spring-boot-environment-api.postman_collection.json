@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "600ac03a-852e-40ea-ba01-8941d1d602c2",
+      "name": "Environment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99565f60-adec-4a36-a7ef-7cb948cac31b",
+          "name": "Spring Boot Application environment properties",
+          "request": {
+            "name": "Spring Boot Application environment properties",
+            "description": {
+              "content": "Returns all environment properties including system, application, and profile-specific",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "env"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e802a1b-4d53-4c9a-80ed-37c203700eac",
+              "name": "Environment properties",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "env"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activeProfiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"propertySources\": [\n    {\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"origin\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"origin\": \"string\"\n        }\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"origin\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6dde5c8-f735-4d64-ae98-3c18cee07282",
+          "name": "Spring Boot Specific environment property value",
+          "request": {
+            "name": "Spring Boot Specific environment property value",
+            "description": {},
+            "url": {
+              "path": [
+                "env",
+                ":property"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "property",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73d0c22c-7d04-427e-b626-74bca7867f0d",
+              "name": "Property value and sources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "env",
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "769685d5-3448-4f59-bf9d-51a769d8c883",
+    "name": "Spring Boot Actuator Application Environment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application Health API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Application health information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health"
+          },
+          "docs": "Returns the health status of the application and its components"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Health for a specific component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health/:component",
+            "params": [
+              {
+                "name": "component",
+                "value": "",
+                "type": "path",
+                "description": "Health component name (e.g., db, diskSpace, redis)"
+              }
+            ]
+          },
+          "docs": "Spring Boot Health for a specific component"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

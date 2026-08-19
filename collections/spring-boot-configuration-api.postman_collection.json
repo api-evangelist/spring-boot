@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "001f252a-1f8e-473b-aac9-538a1d58e4fb",
+      "name": "Configuration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf642bdb-c4f4-4ab2-8ad9-af30081369be",
+          "name": "Spring Boot Configuration properties report",
+          "request": {
+            "name": "Spring Boot Configuration properties report",
+            "description": {
+              "content": "Returns all @ConfigurationProperties beans and their bound values",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configprops"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6aaaaa89-9936-43dc-9d85-f419ec7f3e01",
+              "name": "Configuration properties",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configprops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "35347425-61bd-4365-ba9a-e1c8dbcb6a9f",
+    "name": "Spring Boot Actuator Application Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot List all Spring beans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/beans"
+          },
+          "docs": "Returns all beans in the application context with their dependencies"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Request mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/mappings"
+          },
+          "docs": "Returns all @RequestMapping paths in the application"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Scheduled tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/scheduledtasks"
+          },
+          "docs": "Spring Boot Scheduled tasks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

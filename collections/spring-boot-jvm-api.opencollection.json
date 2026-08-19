@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application JVM API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JVM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Thread dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/threaddump"
+          },
+          "docs": "Returns a snapshot of all threads in the JVM"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Heap dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/heapdump"
+          },
+          "docs": "Returns an hprof heap dump file"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Application Environment API",
+    "version": "3.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Boot Application environment properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env"
+          },
+          "docs": "Returns all environment properties including system, application, and profile-specific"
+        },
+        {
+          "info": {
+            "name": "Spring Boot Specific environment property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env/:property",
+            "params": [
+              {
+                "name": "property",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Spring Boot Specific environment property value"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
