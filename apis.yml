@@ -22,6 +22,15 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
+  - Auto-Configuration
+  - Embedded Server
+  - Framework
+  - Java
+  - Microservices
+  - REST API
+  - Spring
+  - Web Development
+tags_raw:
   - Auto Configuration
   - Embedded Server
   - Framework
