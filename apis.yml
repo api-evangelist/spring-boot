@@ -35,7 +35,7 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
-  - Auto-Configuration
+  - Auto Configuration
   - Embedded Server
   - Framework
   - Java
