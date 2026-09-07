@@ -383,3 +383,5 @@ include:
     url: https://spring.io/projects/spring-cloud
   - name: Spring Data
     url: https://spring.io/projects/spring-data
+x-parent: spring
+x-relationship: product

@@ -27,6 +27,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "spring-boot-application-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-caches-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-configuration-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-environment-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-health-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-info-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-jvm-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-lifecycle-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-loggers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-boot-metrics-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
