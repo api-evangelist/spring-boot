@@ -43,8 +43,8 @@ tags:
   - REST API
   - Spring
   - Web Development
-  - Spring Boot
 tags_raw:
+  - Spring Boot
   - Auto Configuration
   - Embedded Server
   - Framework
@@ -100,6 +100,11 @@ apis:
   humanURL: https://github.com/codecentric/spring-boot-admin
   baseURL: http://localhost:8080/admin
   tags:
+  - Administration
+  - Dashboards
+  - Management
+  - Monitoring
+  tags_raw:
   - Administration
   - Dashboard
   - Management
