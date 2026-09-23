@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Spring Boot Actuator Application Configuration API
+  title: Spring Boot Actuator Configuration API
   description: Spring Boot Actuator exposes production-ready management and monitoring endpoints for Spring Boot applications. Endpoints provide health checks, metrics, environment info, configuration properties, thread dumps, and more.
   version: 3.3.0
   contact:

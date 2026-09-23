@@ -1,16 +1,7 @@
 {
   "provider": "spring-boot",
   "sources": [
-    "spring-boot-application-api-openapi.yml",
-    "spring-boot-caches-api-openapi.yml",
-    "spring-boot-configuration-api-openapi.yml",
-    "spring-boot-environment-api-openapi.yml",
-    "spring-boot-health-api-openapi.yml",
-    "spring-boot-info-api-openapi.yml",
-    "spring-boot-jvm-api-openapi.yml",
-    "spring-boot-lifecycle-api-openapi.yml",
-    "spring-boot-loggers-api-openapi.yml",
-    "spring-boot-metrics-api-openapi.yml"
+    "_original/spring-boot-actuator-openapi.yml"
   ],
   "outputs": [
     "spring-boot-application-api-openapi.yml",
@@ -28,17 +19,20 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "spring-boot-application-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-caches-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-configuration-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-environment-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-health-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-info-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-jvm-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-lifecycle-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-loggers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-boot-metrics-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spring-boot-actuator-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "spring-boot-application-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-caches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-environment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-jvm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-lifecycle-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-loggers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-boot-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

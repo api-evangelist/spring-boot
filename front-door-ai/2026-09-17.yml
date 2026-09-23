@@ -1,0 +1,34 @@
+# Front Door AI Index — spring-boot — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: spring-boot
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: spring.io
+  final_host: spring.io
+  ownership: shared
+  owner: spring
+  shares_host_with:
+  - spring
+  - spring-batch
+  - spring-batch-5-1
+  - spring-cloud-config
+  - spring-cloud-gateway
+  - spring-cloud-stream
+  - spring-data
+  - spring-integration
+  - spring-security
+  inherited_from: null
+  verdict: scored
+  score: null
+  host_score: 1
+  density: null
+  words: 484
+  tiers:
+    agentic: 0
+    core: 1
+    model: 0
+  ambiguous: 0
+  top_terms:
+    AI: 1
