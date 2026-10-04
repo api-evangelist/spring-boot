@@ -338,6 +338,9 @@ apis:
   - type: SpectralRules
     url: rules/spring-boot-actuator-rules.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/spring-boot-capability-edges.yml
+    name: Spring Boot Business Capability Map
   - type: IssueTracker
     url: https://github.com/codecentric/spring-boot-admin/issues
   - type: Releases
