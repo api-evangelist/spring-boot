@@ -338,6 +338,12 @@ apis:
   - type: SpectralRules
     url: rules/spring-boot-actuator-rules.yml
 common:
+  - type: Plans
+    url: plans/spring-boot-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/spring-boot-rate-limits.yml
+  - type: FinOps
+    url: finops/spring-boot-finops.yml
   - type: CapabilityMap
     url: capabilities/spring-boot-capability-edges.yml
     name: Spring Boot Business Capability Map
