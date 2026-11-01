@@ -1,4 +1,4 @@
-# Spring Boot (spring-boot)
+# Spring Boot
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,137 +66,178 @@
 
 Spring Boot is an open source Java-based framework used to create stand-alone, production-grade Spring-based applications with minimal configuration. It provides auto-configuration, embedded server support, opinionated defaults, and production-ready features including health checks, metrics, and externalized configuration management.
 
-**APIs.json:** [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)
+**Areas:** Spring Boot · Auto-Configuration · Embedded Server · Framework · Java · Microservices · REST API · Spring · Web Development
 
-## Tags
+## Spring Boot on APIs.io
 
-- Auto Configuration
-- Embedded Server
-- Framework
-- Java
-- Microservices
-- REST API
-- Spring
-- Web Development
+Everything profiled for Spring Boot is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/spring-boot/](https://apis.io/providers/spring-boot/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+- [Spring Boot REST API](https://apis.io/apis/spring-boot/spring-boot-rest-api/) — RESTful web services built with Spring Boot using Spring MVC or Spring WebFlux. Supports JSON, XML, and hypermedia responses with full content negotiation,…
+- [Spring Data REST API](https://apis.io/apis/spring-boot/spring-data-rest/) — Exposes Spring Data repositories as hypermedia-driven RESTful resources automatically. Supports HAL, collection+json media types, sorting, pagination,…
+- [Spring Boot Admin API](https://apis.io/apis/spring-boot/spring-boot-admin/) — Admin UI and monitoring tool for Spring Boot applications providing registration, health monitoring, log level management, JMX bean access, and notification…
+- [Spring Boot Application API](https://apis.io/apis/spring-boot/spring-boot-application-api/) — The Application API from Spring Boot — 3 operation(s) for application.
+- [Spring Boot Caches API](https://apis.io/apis/spring-boot/spring-boot-caches-api/) — The Caches API from Spring Boot — 2 operation(s) for caches.
+- [Spring Boot Configuration API](https://apis.io/apis/spring-boot/spring-boot-configuration-api/) — The Configuration API from Spring Boot — 1 operation(s) for configuration.
+- [Spring Boot Environment API](https://apis.io/apis/spring-boot/spring-boot-environment-api/) — The Environment API from Spring Boot — 2 operation(s) for environment.
+- [Spring Boot Health API](https://apis.io/apis/spring-boot/spring-boot-health-api/) — The Health API from Spring Boot — 2 operation(s) for health.
+- [Spring Boot Info API](https://apis.io/apis/spring-boot/spring-boot-info-api/) — The Info API from Spring Boot — 1 operation(s) for info.
+- [Spring Boot JVM API](https://apis.io/apis/spring-boot/spring-boot-jvm-api/) — The JVM API from Spring Boot — 2 operation(s) for jvm.
+- [Spring Boot Lifecycle API](https://apis.io/apis/spring-boot/spring-boot-lifecycle-api/) — The Lifecycle API from Spring Boot — 1 operation(s) for lifecycle.
+- [Spring Boot Loggers API](https://apis.io/apis/spring-boot/spring-boot-loggers-api/) — The Loggers API from Spring Boot — 2 operation(s) for loggers.
+- [Spring Boot Metrics API](https://apis.io/apis/spring-boot/spring-boot-metrics-api/) — The Metrics API from Spring Boot — 3 operation(s) for metrics.
 
-## APIs
+### Published properties
 
-### Spring Boot Actuator API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Production-ready management and monitoring endpoints for Spring Boot applications. Provides health checks, metrics, environment info, configuration properties, thread dumps, heap dumps, logger configuration, cache management, and graceful shutdown.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
-- **Base URL:** `http://localhost:8080/actuator`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Spring Boot Agentic Access](https://apis.io/agentic-access/spring-boot/spring-boot-agentic-access/)
 
-- Actuator
-- Health Check
-- Management
-- Metrics
-- Monitoring
+#### JSON Schema (3)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/)
-- [OpenAPI](openapi/spring-boot-actuator-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/spring-boot-actuator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-boot-actuator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/spring-boot-actuator-health-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/spring-boot-actuator-metric-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/spring-boot-actuator-structure.json)
-- [J S O N L D Context](json-ld/spring-boot-context.jsonld)
-- [Spectral Rules](rules/spring-boot-actuator-rules.yml)
+- [Spring Boot Actuator Health Response](https://apis.io/schemas/spring-boot/spring-boot-actuator-health/)
+- [Spring Boot Actuator Metric Response](https://apis.io/schemas/spring-boot/spring-boot-actuator-metric/)
+- [Spring Boot Application Configuration](https://apis.io/schemas/spring-boot/spring-boot-application-properties/)
 
-### Spring Boot REST API
+#### JSON Structure (1)
 
-RESTful web services built with Spring Boot using Spring MVC or Spring WebFlux. Supports JSON, XML, and hypermedia responses with full content negotiation, validation, error handling, and CORS configuration.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://spring.io/guides/gs/rest-service/](https://spring.io/guides/gs/rest-service/)
-- **Base URL:** `http://localhost:8080/api`
+- [Spring Boot Actuator Structure](https://apis.io/json-structure/spring-boot/spring-boot-actuator-structure/)
 
-#### Tags
+#### JSON-LD (1)
 
-- HTTP
-- JSON
-- REST
-- Web Services
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Spring Boot Context](https://apis.io/jsonld/spring-boot/spring-boot-context/)
 
-- [Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/web.html)
-- [Getting  Started  Guide](https://spring.io/guides/gs/rest-service/)
-- [Tutorial](https://spring.io/guides/tutorials/rest/)
-- [Postman Collection](collections/spring-boot-actuator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-boot-actuator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Vocabulary (1)
 
-### Spring Data REST API
+The provider's domain terms, defined.
 
-Exposes Spring Data repositories as hypermedia-driven RESTful resources automatically. Supports HAL, collection+json media types, sorting, pagination, projections, and custom event handlers.
+- [Spring Boot Vocabulary](https://apis.io/vocabularies/spring-boot/spring-boot-vocabulary/)
 
-- **Human URL:** [https://spring.io/projects/spring-data-rest](https://spring.io/projects/spring-data-rest)
-- **Base URL:** `http://localhost:8080/`
+#### Examples (3)
 
-#### Tags
+Example requests and responses.
 
-- Database
-- HATEOAS
-- Repository
-- REST
+- [Spring Boot Actuator Get Health Example](https://apis.io/examples/spring-boot/spring-boot-actuator-get-health-example/)
+- [Spring Boot Actuator Get Metrics Example](https://apis.io/examples/spring-boot/spring-boot-actuator-get-metrics-example/)
+- [Spring Boot Actuator Set Logger Example](https://apis.io/examples/spring-boot/spring-boot-actuator-set-logger-example/)
 
-#### Properties
+#### Collections (11)
 
-- [Documentation](https://docs.spring.io/spring-data/rest/docs/current/reference/html/)
-- [A P I  Guide](https://docs.spring.io/spring-data/rest/docs/current/api/)
-- [Getting Started](https://spring.io/guides/gs/accessing-data-rest/)
-- [Postman Collection](collections/spring-boot-actuator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-boot-actuator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Spring Boot Admin API
+- [Spring Boot Actuator API](https://apis.io/collections/spring-boot/open-spring-boot-actuator/)
+- [Spring Boot Actuator Application API](https://apis.io/collections/spring-boot/open-spring-boot-application-api/)
+- [Spring Boot Actuator Application Caches API](https://apis.io/collections/spring-boot/open-spring-boot-caches-api/)
+- [Spring Boot Actuator Application Configuration API](https://apis.io/collections/spring-boot/open-spring-boot-configuration-api/)
+- [Spring Boot Actuator Application Environment API](https://apis.io/collections/spring-boot/open-spring-boot-environment-api/)
+- [Spring Boot Actuator Application Health API](https://apis.io/collections/spring-boot/open-spring-boot-health-api/)
+- [Spring Boot Actuator Application Info API](https://apis.io/collections/spring-boot/open-spring-boot-info-api/)
+- [Spring Boot Actuator Application JVM API](https://apis.io/collections/spring-boot/open-spring-boot-jvm-api/)
+- [Spring Boot Actuator Application Lifecycle API](https://apis.io/collections/spring-boot/open-spring-boot-lifecycle-api/)
+- [Spring Boot Actuator Application Loggers API](https://apis.io/collections/spring-boot/open-spring-boot-loggers-api/)
+- [Spring Boot Actuator Application Metrics API](https://apis.io/collections/spring-boot/open-spring-boot-metrics-api/)
 
-Admin UI and monitoring tool for Spring Boot applications providing registration, health monitoring, log level management, JMX bean access, and notification capabilities for multiple application instances.
+#### Governance rules (2)
 
-- **Human URL:** [https://github.com/codecentric/spring-boot-admin](https://github.com/codecentric/spring-boot-admin)
-- **Base URL:** `http://localhost:8080/admin`
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Spring Boot — actuator rules](https://apis.io/rules/spring-boot/spring-boot-actuator-rules/)
+- [Spring Boot — jsonschema rules](https://apis.io/rules/spring-boot/spring-boot-jsonschema-spectral-rules/)
 
-- Administration
-- Dashboard
-- Management
-- Monitoring
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://codecentric.github.io/spring-boot-admin/current/)
-- [GitHub Repository](https://github.com/codecentric/spring-boot-admin)
-- [Getting Started](https://codecentric.github.io/spring-boot-admin/current/#getting-started)
-- [Postman Collection](collections/spring-boot-actuator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-boot-actuator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Spring Boot Domain Security](https://apis.io/security/spring-boot/spring-boot-domain-security/)
+- [Spring Boot Vulnerability Disclosure](https://apis.io/security/spring-boot/spring-boot-vulnerability-disclosure/)
 
-## Common Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://docs.spring.io/spring-boot/)
+Published plans, tiers and prices.
+
+- [Spring Boot Plans Pricing](https://apis.io/plans/spring-boot/spring-boot-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Spring Boot Rate Limits](https://apis.io/rate-limits/spring-boot/spring-boot-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Spring Boot Finops](https://apis.io/finops/spring-boot/spring-boot-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://spring.io/projects/spring-boot)
-- [Git Hub](https://github.com/spring-projects/spring-boot)
-- [GitHub Organization](https://github.com/spring-projects)
-- [Issues](https://github.com/spring-projects/spring-boot/issues)
-- [Releases](https://github.com/spring-projects/spring-boot/releases)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/spring-boot)
+- [Documentation](https://docs.spring.io/spring-boot/)
 - [Blog](https://spring.io/blog/category/spring-boot)
-- [Guides](https://spring.io/guides)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot)
-- [Maven  Central](https://search.maven.org/artifact/org.springframework.boot/spring-boot)
-- [Spring  Initializr](https://start.spring.io/)
-- [Vocabulary](vocabulary/spring-boot-vocabulary.yml)
+- [GitHub](https://github.com/spring-projects)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** VMware Tanzu (Spring Team)
-**Email:** spring-boot@vmware.com
-**URL:** https://spring.io/team
+**Kin Score 32.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 50.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 7.9 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/spring-boot/](https://apis.io/providers/spring-boot/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Spring Boot: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/spring-boot/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
